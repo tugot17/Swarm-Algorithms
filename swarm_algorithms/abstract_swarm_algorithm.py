@@ -16,7 +16,3 @@ class AbstractSwarmAlgorithm(ABC):
     @abstractmethod
     def step(self):
         return NotImplementedError()
-
-    @abstractmethod
-    def get_particles(self):
-        return NotImplementedError()

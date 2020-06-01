@@ -20,13 +20,24 @@ class AbstractTestingFunction(ABC):
         dx_min = np.min(points[:, 0])
         dy_min = np.min(points[:, 1])
 
-        eps = 1e-3
-        X = np.arange(dx_min, dx_max, (dx_max - dx_min) / 50. + eps)
-        Y = np.arange(dy_min, dy_max, (dy_max - dy_min) / 50. + eps)
+        eps = 1.0
+
+        d_min = min(dx_min, dy_min)
+        d_max = min(dx_max, dy_max)
+
+        X = np.arange(d_min, max(d_max, d_min+eps), max(d_max - d_min, eps) / 50.)
+        Y = np.arange(d_min, max(d_max, d_min+eps), max(d_max - d_min, eps) / 50.)
+
+        # Y = np.arange(dy_min, max(dy_max, dy_min+eps), max(dy_max - dy_min, eps) / 50.)
         XY_plate = np.transpose([np.tile(X, len(Y)), np.repeat(Y, len(X))])
 
         Z = self.__call__(XY_plate)
         Z = np.reshape(Z, (len(X), len(Y)))
+
+        print(f"X: {X.shape}")
+        print(f"Y: {Y.shape}")
+        print(f"XY_plate: {XY_plate.shape}")
+        print(f"Z: {Z.shape}")
 
         # Plot the surface.
         pl = plt.contourf(X, Y, Z)

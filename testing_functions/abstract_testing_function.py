@@ -13,14 +13,14 @@ class AbstractTestingFunction(ABC):
     def __call__(self, x):
         return NotImplementedError()
 
-    def plot_2d(self, points=[]):
+    def plot_2d(self, points=[], dirs=[]):
         # Make data.
         dx_max = np.max(points[:, 0])
         dy_max = np.max(points[:, 1])
         dx_min = np.min(points[:, 0])
         dy_min = np.min(points[:, 1])
 
-        eps = 1.0
+        eps = 0.1
 
         d_min = min(dx_min, dy_min)
         d_max = min(dx_max, dy_max)
@@ -34,17 +34,16 @@ class AbstractTestingFunction(ABC):
         Z = self.__call__(XY_plate)
         Z = np.reshape(Z, (len(X), len(Y)))
 
-        print(f"X: {X.shape}")
-        print(f"Y: {Y.shape}")
-        print(f"XY_plate: {XY_plate.shape}")
-        print(f"Z: {Z.shape}")
-
         # Plot the surface.
         pl = plt.contourf(X, Y, Z)
         plt.colorbar(pl, shrink=0.5, aspect=5)
 
         # Plot the points
         plt.scatter(points[:, 0], points[:, 1], c='r')
+
+        # Plot the dirs
+        print(points.shape, dirs.shape)
+        plt.quiver(points[:, 0], points[:, 1], dirs[:, 0], dirs[:, 1])
 
         plt.show()
 

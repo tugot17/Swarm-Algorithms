@@ -5,14 +5,21 @@ import numpy as np
 
 class PSO(AbstractSwarmAlgorithm):
 
-    def __init__(self, optimized_function, number_of_agents):
+    def __init__(self, optimized_function, number_of_agents, new_ratio=1., local_ratio = 1.):
+        """
+
+        :param optimized_function:
+        :param number_of_agents:
+        :param new_ratio: how to affect new v
+        :param local_ratio: how to affect local v
+        """
         super().__init__(optimized_function, number_of_agents)
-        self.w = 0.1
-        self.fi_p = 0.1
-        self.fi_g = 0.1
+        self.w = 0.1 * (1 - new_ratio)
+        self.fi_p = 0.1 * new_ratio * local_ratio
+        self.fi_g = 0.1 * new_ratio * (1 - local_ratio)
 
         # Initialize particles
-        p_lo, p_hi = -50., 50.
+        p_lo, p_hi = -15., 15.
         v_lo, v_hi = -0.1, 0.1
         self.particles = [Particle(np.random.uniform(p_lo, p_hi, 2),
                                    np.random.uniform(v_lo, v_hi, 2)

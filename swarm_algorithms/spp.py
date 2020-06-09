@@ -15,7 +15,7 @@ class SPP(AbstractSwarmAlgorithm):
         super().__init__(optimized_function, number_of_agents)
 
         # Hyperparameters
-        p_lo, p_hi = -50., 50.
+        p_lo, p_hi = -15., 15.
         self.v = 0.05
         self.distance_metric = lambda a, b: np.sqrt(np.sum((a - b) ** 2))
         self.k_nearest = max(1, int(0.1 * number_of_agents))

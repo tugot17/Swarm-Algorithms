@@ -9,7 +9,7 @@ class AAA(AbstractSwarmAlgorithm):
     w_min, w_max = np.pi / 2, 3 * np.pi / 2
 
     a_min, a_max = 0., 2 * np.pi
-    p_lo, p_hi = -50., 50.
+    p_lo, p_hi = -15., 15.
 
     survival_coeff = 0.7
     s_sigma = 0.01

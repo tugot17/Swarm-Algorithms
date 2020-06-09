@@ -54,12 +54,6 @@ class AbstractTestingFunction(ABC):
         ax = fig.gca(projection='3d')
 
         # Make data.
-        # X = np.arange(-d, d, 0.5)
-        # Y = np.arange(-d, d, 0.5)
-        # XY_plate = np.transpose([np.tile(X, len(Y)), np.repeat(Y, len(X))])
-
-
-        # Make data.
         dx_max = np.max(points[:, 0])
         dy_max = np.max(points[:, 1])
 

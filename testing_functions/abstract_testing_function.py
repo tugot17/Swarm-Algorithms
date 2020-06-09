@@ -54,8 +54,28 @@ class AbstractTestingFunction(ABC):
         ax = fig.gca(projection='3d')
 
         # Make data.
-        X = np.arange(-d, d, 0.5)
-        Y = np.arange(-d, d, 0.5)
+        # X = np.arange(-d, d, 0.5)
+        # Y = np.arange(-d, d, 0.5)
+        # XY_plate = np.transpose([np.tile(X, len(Y)), np.repeat(Y, len(X))])
+
+
+        # Make data.
+        dx_max = np.max(points[:, 0])
+        dy_max = np.max(points[:, 1])
+
+        dx_min = np.min(points[:, 0])
+        dy_min = np.min(points[:, 1])
+
+        d_min = min(dx_min, dy_min)
+        d_max = max(dx_max, dy_max)
+
+        d_min = min(-1, d_min)
+        d_max = max(1, d_max)
+
+
+        X = np.arange(d_min, d_max + (d_max - d_min) / 50., (d_max - d_min) / 50.)
+        Y = np.arange(d_min, d_max + (d_max - d_min) / 50., (d_max - d_min) / 50.)
+
         XY_plate = np.transpose([np.tile(X, len(Y)), np.repeat(Y, len(X))])
 
         Z = self.__call__(XY_plate)

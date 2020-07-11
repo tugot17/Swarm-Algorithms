@@ -42,6 +42,8 @@ Three different optimisation algorithms have been implemented. Each algorithm fo
 
 ### Artificial Algae Algorithm
 
+Method inspired by [Artificial algae algorithm (AAA) for nonlinear global optimization, Uymaz et al.](https://www.sciencedirect.com/science/article/abs/pii/S1568494615001465?via%3Dihub)
+
 ## Testing functions
 
 Two non-convex function functions - [Auckley](https://www.sfu.ca/~ssurjano/ackley.html) and [Gierwank](https://www.sfu.ca/~ssurjano/griewank.html) has been implemented. Both functions work for any number of dimensions (n).

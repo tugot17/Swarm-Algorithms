@@ -11,8 +11,8 @@ class SPP(AbstractSwarmAlgorithm):
           in their local neighborhood
           up to some added noise.
     """
-    def __init__(self, optimized_function, number_of_agents):
-        super().__init__(optimized_function, number_of_agents)
+    def __init__(self, optimised_function, number_of_agents):
+        super().__init__(optimised_function, number_of_agents)
 
         # Hyperparameters
         p_lo, p_hi = -15., 15.

@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     for idx, local_ratio in enumerate(local_ratios):
         for jdx, new_ratio in enumerate(new_ratios):
-            swarm = PSO(optimized_function=OPTIMIZED_FUNCTON, number_of_agents=NUMBER_OF_AGENTS, new_ratio=new_ratio,
+            swarm = PSO(optimised_function=OPTIMIZED_FUNCTON, number_of_agents=NUMBER_OF_AGENTS, new_ratio=new_ratio,
                         local_ratio=local_ratio)
 
             particles_in_step = []

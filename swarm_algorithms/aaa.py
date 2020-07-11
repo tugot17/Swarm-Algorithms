@@ -15,8 +15,8 @@ class AAA(AbstractSwarmAlgorithm):
     s_sigma = 0.01
 
 
-    def __init__(self, optimized_function, number_of_agents):
-        super().__init__(optimized_function, number_of_agents)
+    def __init__(self, optimised_function, number_of_agents):
+        super().__init__(optimised_function, number_of_agents)
 
         # Initialize particles
         self.particles = [Particle(position=np.random.uniform(self.p_lo, self.p_hi, 2))

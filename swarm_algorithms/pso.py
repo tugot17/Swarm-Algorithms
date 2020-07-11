@@ -5,15 +5,15 @@ import numpy as np
 
 class PSO(AbstractSwarmAlgorithm):
 
-    def __init__(self, optimized_function, number_of_agents, new_ratio=1., local_ratio = 1.):
+    def __init__(self, optimised_function, number_of_agents, new_ratio=0.5, local_ratio = 0.5):
         """
 
-        :param optimized_function:
+        :param optimised_function:
         :param number_of_agents:
         :param new_ratio: how to affect new v
         :param local_ratio: how to affect local v
         """
-        super().__init__(optimized_function, number_of_agents)
+        super().__init__(optimised_function, number_of_agents)
         self.w = 0.1 * (1 - new_ratio)
         self.fi_p = 0.1 * new_ratio * local_ratio
         self.fi_g = 0.1 * new_ratio * (1 - local_ratio)

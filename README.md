@@ -1,5 +1,5 @@
 # Swarm-Algorithms
-Python implemntation of swarm algorithms used for solveing non-convex optimization problems. 
+Python implemntation of swarm algorithms (Particle Swarm Optimization, Self Propelled Particles and Artificial Algae Algorithm) used for solveing non-convex optimization problems (algorithms are tested on Acukley and Gierwank functions). 
 
 <img src="images/pso.gif" alt="drawing" width="500px"/>
 
@@ -14,7 +14,7 @@ NUMBER_OF_STEPS = 30
 NUMBER_OF_AGENTS = 50
 
 optimised_function = Auckley()
-#optimised_function = Michalkiewicz()
+#optimised_function = Gierwank()
 
 if __name__ == '__main__':
     swarm = PSO(optimised_function=optimised_function, number_of_agents=NUMBER_OF_AGENTS)

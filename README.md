@@ -5,7 +5,7 @@ Python implemntation of swarm algorithms used for solveing non-convex optimizati
 
 ## Getting Started
 
-In order to check how the implemented algorithms work just run [main.py](main.py). Originally it will use PSO for optimization of Auckley function. 
+In order to check how the implemented algorithms work just run [main.py](main.py). Originally it will use PSO for optimization of the Auckley function. 
 If you want to check either different function or different optimization method just uncomment the codeline. 
 The default training loop for every i=30 steps show the positions of agents on a 2d visualisation. Furthermore it show a 3d visualisation after the end of optimization process. 
 
@@ -36,13 +36,49 @@ if __name__ == '__main__':
 ## Implemented Swarm Algorithms
 Three different optimisation algorithms have been implemented. Each algorithm for both functions is capable of finding the global solution in a finite number of steps.
 
-### Paricle Swar
+Each implemented algorithm implements the below interface:
 
-### Self Propelled Particles
+```python
+class AbstractSwarmAlgorithm(ABC):
+    def __init__(self, optimised_function, number_of_agents):
+        super().__init__()
 
-### Artificial Algae Algorithm
+        self.optimized_function = optimised_function
+        self.number_of_agents = number_of_agents
 
-Method inspired by [Artificial algae algorithm (AAA) for nonlinear global optimization, Uymaz et al.](https://www.sciencedirect.com/science/article/abs/pii/S1568494615001465?via%3Dihub)
+    @abstractmethod
+    def get_best_global_solution(self):
+        return NotImplementedError()
+
+    @abstractmethod
+    def step(self):
+        return NotImplementedError()
+
+```
+
+### Paricle Swarm Optimization (PSO)
+
+PSO is a basic algorithm that uses so-called "collective intelligence" to solve optimization problems. The general idea is to locate the number of particles (agents) in a different part of an input space and in each step change their velocity vector according to three factors: particle's velocity from the previous step (V_{t-1}), the best position the particle ever reach (P_best) and the best position any particle from a swarm ever reached (P_best).
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=V_{t}&space;=&space;V_{t-1}&space;&plus;&space;(\gamma)&space;*&space;c_1&space;*&space;r_1&space;*&space;(P_{best}&space;-&space;X_{t-1})&space;&plus;&space;c_2&space;*&space;r_2&space;*&space;(G_{best}&space;-&space;X_{t-1})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?V_{t}&space;=&space;V_{t-1}&space;&plus;&space;(\gamma)&space;*&space;c_1&space;*&space;r_1&space;*&space;(P_{best}&space;-&space;X_{t-1})&space;&plus;&space;c_2&space;*&space;r_2&space;*&space;(G_{best}&space;-&space;X_{t-1})" title="V_{t} = V_{t-1} + (\gamma) * c_1 * r_1 * (P_{best} - X_{t-1}) + c_2 * r_2 * (G_{best} - X_{t-1})" /></a>
+
+For more details check out the article about PSO on [wikipedia](https://en.wikipedia.org/wiki/Particle_swarm_optimization)
+
+### Self Propelled Particles (SPP)
+
+SPP, similarly to PSO, assumes a colony of particles moving in a certain direction through the space of solutions, however, it differs in assumptions regarding the update of their motion parameters. The basic assumption is that the speed of each particle remains constant, and only its direction of movement changes. The algorithm itself in the basic form is very general and does not define the exact way in which the directions are updated
+
+In our implementation, we propose a solution where a velocity vector is changed in the two "substeps"
+
+1) In the first substep, all the particles set their velocity towards exactly the best global solution found in the previous step
+
+2) In the second substep, the velocity vector of each particle is mixed with the average velocities of k its neighbors
+
+Therefore contrary to the PSO in SPP the velocity vector changes only its direction but doesn't change its length. 
+
+### Artificial Algae Algorithm (AAA)
+
+Method inspired by [Artificial algae algorithm (AAA) for nonlinear global optimization, Uymaz et al.](https://www.sciencedirect.com/science/article/abs/pii/S1568494615001465?via%3Dihub), which is a combination of a swarm and genetic optimization methods. Algae move in circles, and each move loses some of their energy. When the alga improves its position then it is fed, if it worsens it is not. In each step, the "e" weakest (with the lowest energy level) algae are eliminated. In the proposed implementation, the amount of food delivered to the alga is proportional to its level of improvement.
 
 ## Testing functions
 
@@ -72,9 +108,9 @@ And has global minimim at:
 <img src="images/gierwank.png " alt="drawing" width="500px"/>
 
 ## Visualisations
-In order to better understand how the alogrithms works we propose two methods of visualzation. Boths methods work with 2D reaizations of optimised functions. 
-First method scatter the function on 2D plane and uses color as a function value at a point. Moreover for PSO and SPP we show velocity vectors (AAA has no such thing). Second metod is using 3rd dimension to show the actual funtion value.
-For both methods we show function values for every point from the domain as well as positions of every agent. 
+To better understand how the algorithms work we propose two methods of visualization. Both methods work with 2D realizations of optimized functions. 
+The first method scatter the function on a 2D plane and uses color as a function value at a point. Moreover for PSO and SPP, we show velocity vectors (AAA has no such thing). The second method is using the 3rd dimension to show the actual function value.
+For both methods, we show function values for every point from the domain as well as the positions of every agent. 
 
 Both visualisation methods can be found in [abstract_testing_function.py](abstract_testing_function.py)
 ## Authors

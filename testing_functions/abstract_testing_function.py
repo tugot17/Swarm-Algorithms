@@ -48,7 +48,7 @@ class AbstractTestingFunction(ABC):
         # Plot the dirs
         plt.quiver(points[:, 0], points[:, 1], dirs[:, 0], dirs[:, 1])
 
-        plt.savefig(f"{self.i}.jpg")
+        plt.savefig(f"gifs/{self.i}.jpg")
 
         self.i += 1
 

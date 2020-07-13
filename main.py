@@ -6,7 +6,7 @@ from testing_functions.michalkiewicz import Michalkiewicz
 from tqdm import trange
 import numpy as np
 
-NUMBER_OF_STEPS = 600
+NUMBER_OF_STEPS = 450
 NUMBER_OF_AGENTS = 30
 
 optimised_function = Auckley()
@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     for i in trange(NUMBER_OF_STEPS):
         swarm.step()
-        if i % 30 == 0:
+        if i % 10 == 0:
             print(swarm.optimized_function(swarm.best_solution), swarm.best_solution)
             optimised_function.plot_2d(points=np.array([particle.position for particle in swarm.particles]), dirs=np.array([particle.velocity for particle in swarm.particles]))
 

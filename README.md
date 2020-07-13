@@ -1,7 +1,7 @@
 # Swarm-Algorithms
 Python implemntation of swarm algorithms used for solveing non-convex optimization problems. 
 
-<img src="images/pso_visualisation.png" alt="drawing" width="500px"/>
+<img src="images/pso.gif" alt="drawing" width="500px"/>
 
 ## Getting Started
 

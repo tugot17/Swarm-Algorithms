@@ -5,6 +5,7 @@ from matplotlib import cm
 
 
 class AbstractTestingFunction(ABC):
+    i=0
 
     def __init__(self, **kwargs):
         super().__init__()
@@ -46,6 +47,10 @@ class AbstractTestingFunction(ABC):
 
         # Plot the dirs
         plt.quiver(points[:, 0], points[:, 1], dirs[:, 0], dirs[:, 1])
+
+        plt.savefig(f"{self.i}.jpg")
+
+        self.i += 1
 
         plt.show()
 

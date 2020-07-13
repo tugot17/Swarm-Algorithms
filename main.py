@@ -6,7 +6,7 @@ from testing_functions.michalkiewicz import Michalkiewicz
 from tqdm import trange
 import numpy as np
 
-NUMBER_OF_STEPS = 500
+NUMBER_OF_STEPS = 600
 NUMBER_OF_AGENTS = 30
 
 optimised_function = Auckley()

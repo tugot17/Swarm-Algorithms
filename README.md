@@ -1,7 +1,7 @@
 # Swarm-Algorithms
 Python implemntation of swarm algorithms (Particle Swarm Optimization, Self Propelled Particles and Artificial Algae Algorithm) used for solveing non-convex optimization problems (algorithms are tested on Acukley and Gierwank functions). 
 
-<img src="images/pso.gif" alt="drawing" width="500px"/>
+<img src="images/pso.gif" alt="drawing" width="700px"/>
 
 ## Getting Started
 

@@ -36,6 +36,26 @@ if __name__ == '__main__':
 ## Implemented Swarm Algorithms
 Three different optimisation algorithms have been implemented. Each algorithm for both functions is capable of finding the global solution in a finite number of steps.
 
+Each implemented algorithm implements the below interface:
+
+```python
+class AbstractSwarmAlgorithm(ABC):
+    def __init__(self, optimised_function, number_of_agents):
+        super().__init__()
+
+        self.optimized_function = optimised_function
+        self.number_of_agents = number_of_agents
+
+    @abstractmethod
+    def get_best_global_solution(self):
+        return NotImplementedError()
+
+    @abstractmethod
+    def step(self):
+        return NotImplementedError()
+
+```
+
 ### Paricle Swarm Optimization (PSO)
 
 PSO is a basic algorithm that uses so-called "collective intelligence" to solve optimization problems. The general idea is to locate the number of particles (agents) in a different part of an input space and in each step change their velocity vector according to three factors: particle's velocity from the previous step (V_{t-1}), the best position the particle ever reach (P_best) and the best position any particle from a swarm ever reached (P_best).

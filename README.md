@@ -5,7 +5,7 @@ Python implemntation of swarm algorithms (Particle Swarm Optimization, Self Prop
 
 ## Getting Started
 
-In order to check how the implemented algorithms work just run [main.py](main.py). Originally it will use PSO for optimization of the Auckley function. 
+In order to check how the implemented algorithms work just run [main.py](main.py). Defaultly it will use PSO for optimization of the Auckley function. 
 If you want to check either different function or different optimization method just uncomment the codeline. 
 The default training loop for every i=30 steps show the positions of agents on a 2d visualisation. Furthermore it show a 3d visualisation after the end of optimization process. 
 

@@ -82,7 +82,7 @@ Method inspired by [Artificial algae algorithm (AAA) for nonlinear global optimi
 
 ## Testing functions
 
-Two non-convex function functions - [Auckley](https://www.sfu.ca/~ssurjano/ackley.html) and [Gierwank](https://www.sfu.ca/~ssurjano/griewank.html) has been implemented. Both functions work for any number of dimensions (n).
+Two non-convex functions - [Auckley](https://www.sfu.ca/~ssurjano/ackley.html) and [Gierwank](https://www.sfu.ca/~ssurjano/griewank.html) has been implemented. Both functions work for any number of dimensions (n).
 
 ### Auckley function
 
